@@ -1,0 +1,290 @@
+/* Universal Box Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and Font */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Main App Container */
+.app {
+  background-image: url('./assets/sky.jpg'); /* Ensure this path is correct */
+  background-size: cover; /* Changed to cover for better filling */
+  background-position: bottom;
+  transition: 0.4s ease;
+  min-height: 100vh; /* Ensure app fills full height */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text within app */
+}
+
+/* Warm Weather State */
+.app.warm {
+  background-image: url('./assets/sky.jpg'); /* You might want a different image for warm weather */
+  /* Make sure you have a 'warm-sky.jpg' in your assets folder or remove this rule */
+}
+
+/* Main Content Area */
+main {
+  min-height: 100vh; /* Takes full viewport height */
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
+  padding: 25px; /* Adjust padding for better spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
+  width: 100%; /* Ensure main takes full width */
+  max-width: 900px; /* Limit max width for larger screens */
+  margin: auto; /* Center main content on wider screens */
+}
+
+/* Search Box */
+.search-box {
+  width: 100%; /* Make search box take full width within main padding */
+  max-width: 500px; /* Limit max width for larger screens */
+  margin-bottom: 25px; /* Add some space below the search bar */
+}
+
+.search-box .search-bar {
+  width: 100%; /* Make search bar fill its container */
+  padding: 15px; /* Increase padding for better touch targets */
+  text-align: center;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 16px; /* Uniform border-radius */
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+
+  color: #313131;
+  font-size: 20px;
+
+  transition: 0.2s ease; /* Faster transition for focus effect */
+}
+
+.search-box .search-bar:focus {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+/* Location and Date */
+.location-box .location {
+  margin-top: 20px; /* Adjusted margin */
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+}
+
+.location-box .date {
+  margin-top: 10px; /* Adjusted margin */
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+  margin-bottom: 20px; /* Add space below date */
+}
+
+/* Current Weather Box */
+.weather-box {
+  text-align: center;
+  margin-top: 20px; /* Adjusted margin */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px; /* Space before forecast */
+  max-width: 400px; /* Limit width */
+  width: 90%; /* Responsive width */
+}
+
+.weather-box .temp {
+  position: relative;
+  display: inline-block;
+  margin: 15px auto; /* Adjust margin */
+  padding: 15px 25px;
+
+  color: #FFF;
+  font-size: 90px; /* Slightly smaller for better fit */
+  font-weight: 900;
+
+  text-shadow: 3px 6px rgba(50, 50, 70, 0.5);
+  text-align: center;
+}
+
+.weather-box .weather {
+  color: #FFF;
+  font-size: 40px; /* Slightly smaller */
+  font-weight: 700;
+  text-shadow: 3px 3px rgba(50, 50, 70, 0.5);
+  margin-bottom: 15px; /* Add space below weather description */
+}
+
+/* New styles for additional current weather details */
+.details-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between humidity and wind */
+  margin-bottom: 10px;
+}
+
+.detail-item {
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 400;
+  text-shadow: 1px 1px rgba(50, 50, 70, 0.3);
+}
+
+.detail-item .label {
+  font-weight: 600;
+}
+
+/* New styles for 5-day forecast */
+.forecast-container {
+  width: 100%;
+  max-width: 800px; /* Adjusted max-width for the entire forecast container to allow horizontal space */
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 3px 6px rgba(0, 0, 0, 0.2);
+  color: #FFF;
+  margin-top: 20px; /* Space above forecast section */
+  text-align: center;
+}
+
+.forecast-title {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
+}
+
+.forecast-grid {
+  display: grid; /* Changed back to grid */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Responsive grid for forecast days */
+  gap: 15px; /* Space between forecast cards */
+  justify-items: center; /* Center cards in grid cells */
+  /* Removed properties previously for vertical flex: */
+  /* flex-direction: column; */
+  /* align-items: center; */
+}
+
+.forecast-day-card {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-shadow: 1px 1px rgba(0, 0, 0, 0.3);
+  width: 100%; /* Ensure cards fill their grid cell */
+  /* You can add max-width here if you want to limit individual card width on large screens, e.g.: */
+  /* max-width: 150px; */
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.forecast-date {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.forecast-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.forecast-temp {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.forecast-description {
+  font-size: 14px;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+}
+
+.forecast-detail {
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Loading and Error messages */
+.loading-message, .error-message {
+  color: #FFF;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50px;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.error-message {
+  color: #ff6b6b; /* Red color for errors */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  main {
+    padding: 15px;
+  }
+
+  .location-box .location {
+    font-size: 28px;
+  }
+
+  .weather-box .temp {
+    font-size: 70px;
+  }
+
+  .weather-box .weather {
+    font-size: 32px;
+  }
+
+  .forecast-title {
+    font-size: 24px;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-box .search-bar {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .location-box .location {
+    font-size: 24px;
+  }
+
+  .weather-box .temp {
+    font-size: 60px;
+    padding: 10px 20px;
+  }
+
+  .weather-box .weather {
+    font-size: 28px;
+  }
+
+  .forecast-title {
+    font-size: 20px;
+  }
+
+  .forecast-grid {
+    grid-template-columns: 1fr; /* Stack on very small screens (default for mobile) */
+  }
+}
